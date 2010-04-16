@@ -35,7 +35,8 @@ this.argvToObject = function(argv){
   var obj = {}, regex = /\-\-(\w+)(\=(.+))?/;
   for (var i = 0, l = argv.length, match; i < l; i++){
     match = argv[i].match(regex);
-    if (match) obj[match[1]] = match[3] !== undefined ? eval(match[3]) : null;
+    if (match) obj[match[1]] = match[3] !== undefined ? eval("'"+match[3]+"'") : null;
   }
+
   return obj;
 };

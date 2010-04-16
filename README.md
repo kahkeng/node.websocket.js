@@ -1,3 +1,5 @@
+*Update*: For a more complete solution, I recommend you look into [Socket.IO](http://github.com/RosePad/Socket.IO) and [Socket.IO-node](http://github.com/RosePad/Socket.IO-node).
+
 node.websocket.js
 =================
 
@@ -24,10 +26,8 @@ Run the server:
 
 By default, it'll listen on localhost port 8080. node.websocket.js interprets the arguments passed in and turns those into the object passed to the `websocket::Server` constructor:
 
-	$ node runserver.js --port='8080' --host='some_other_host' --origins=['http://some_allowed_host']
+	$ node runserver.js --port=8080 --host=some_other_host --origins=[http://some_allowed_host]
   
-The option values are eval()'d to turn them into native JavaScript types, so don't forget to wrap strings in `' '`.
-
 On the client side, initialize a `WebSocket` like this:
 
 	new WebSocket(ws://localhost:8080/test);
