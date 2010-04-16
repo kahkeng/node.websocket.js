@@ -48,6 +48,7 @@ Server = this.Server = function(options){
     origins: '*',
     log: true,
     logKey: null,
+    modulePath: './modules',
     tls: false
   }, options || {});
   
@@ -192,7 +193,7 @@ Connection.prototype._handshake = function(data){
     this.socket.close();
   }
   
-  module = './modules' + (matches[0] == '/' ? '/_default' : matches[0]).toLowerCase();
+  module = this.server.options.modulePath + (matches[0] == '/' ? '/_default' : matches[0]).toLowerCase();
   try {
     var module = require(module);
     this.module = new module.Module();
@@ -234,3 +235,4 @@ Connection.prototype._serveFlashPolicy = function(){
   this.socket.write('</cross-domain-policy>\n');
   this.socket.close();
 };
+
